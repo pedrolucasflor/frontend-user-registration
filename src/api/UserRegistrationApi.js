@@ -5,28 +5,49 @@ this.status = status
 this.message = message
 }
 
-axios.create({
-    baseUrl: 'http://localhost:5284'
-})
-
 export default {
     
-    async findUsers () {
+    async findUsers (query) {
         try {
-          const response = await axios.get('/users', {})
+          const response = await axios.get('/api/users', {
+            params: {
+                page: query.page,
+                size: query.size,
+                name: query.name
+            }
+          })
+
+          return response.data
+        } catch (e) {
+            console.log(e)
+        }
+    },
+
+    async findUser (id) {
+        try {
+          const response = await axios.get(`/api/users/${id}`)
     
           return response.data
         } catch (e) {
-          throw new RequestError(e.response.status, e.response.data)
+            console.log(e)
         }
     },
 
     async addUser (query) {
         try {
-            const response = await axios.post('/users', query)
+            const response = await axios.post('api/users', query)
             return response.data
         } catch (e) {
-            throw new RequestError(e.response.status, e.response.data)
+                console.log(e)
+        }
+    },
+
+    async updateUser (id, query) {
+        try {
+            const response = await axios.put(`/api/users/${id}`, query)
+            return response.data
+        } catch (e) {
+                console.log(e)
         }
     },
 

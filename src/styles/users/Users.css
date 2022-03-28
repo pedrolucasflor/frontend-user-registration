@@ -27,4 +27,16 @@
 .users-table tbody tr:last-of-type {
   border-bottom: 2px solid #354d3b;
 }
+
+.users-table__edit-btn {
+  border: 0;
+  margin: -7px 0;
+  padding: 7px 10px;
+  font-weight: bold;
+  border-radius: 4px;
+  background-color: #354d3b;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+}
 /*# sourceMappingURL=Users.css.map */
